@@ -31,14 +31,10 @@ jobs:
         npm install
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:esp32dev' >>platformio.ini
-        echo 'build_flags = ${env:esp32dev.build_flags} ${esp32.AR_build_flags} -D USERMOD_BH1750 -D USERMOD_AUTO_SAVE -D USERMOD_WORDCLOCK -D USERMOD_ANALOG_CLOCK -D USERMOD_ANIMATED_STAIRCASE -D USERMOD_MULTI_RELAY -D USERMOD_PIRSWITCH -D USERMOD_RTC -D USERMOD_ADS1115 -D USERMOD_SEVEN_SEGMENT -D USERMOD_SSDR -D USERMOD_SN_PHOTORESISTOR' >>platformio.ini
+        echo 'build_flags = ${env:esp32dev.build_flags} ${esp32.AR_build_flags} -D USERMOD_ANALOG_CLOCK -D USERMOD_ANIMATED_STAIRCASE -D USERMOD_MULTI_RELAY -D USERMOD_RTC -D USERMOD_SSDR -D USERMOD_SN_PHOTORESISTOR' >>platformio.ini
         echo 'lib_deps = ' >>platformio.ini
         echo '  ${env:esp32dev.lib_deps}' >>platformio.ini
         echo '  ${esp32.AR_lib_deps}' >>platformio.ini
-        echo '  claws/BH1750 @ ^1.2.0' >>platformio.ini
-        echo '  adafruit/Adafruit BusIO @ 1.13.2' >>platformio.ini
-        echo '  adafruit/Adafruit ADS1X15 @ 2.4.0' >>platformio.ini
-        echo '  adafruit/Adafruit Unified Sensor' >>platformio.ini
         
         echo 'build_unflags= -D WLED_RELEASE_NAME' >>platformio.ini
         pio run -e custom_build || pio run -e custom_build
